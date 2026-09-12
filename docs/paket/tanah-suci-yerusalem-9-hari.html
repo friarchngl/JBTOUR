@@ -305,6 +305,22 @@ section[id]{scroll-margin-top:140px}
   font-variant-numeric:lining-nums tabular-nums;
   font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1}
 
+/* article detail page — a narrower measure than the rest of the site, because
+   this is the one page built to be read rather than scanned */
+.wrap--read{max-width:840px}
+.ad__h1{color:#fff;font-size:56px;line-height:1.12;text-wrap:balance}
+.ad__meta{margin-top:4px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--on-blue-s)}
+.ad__lede{font-family:var(--fh);font-size:27px;font-style:italic;font-weight:600;
+  line-height:1.5;color:var(--ink);margin:0 0 44px;text-wrap:balance}
+.ad__list{margin-top:0}
+.ad__list h2{font-family:var(--fb);font-size:20px;font-weight:700;color:var(--ink);
+  margin:0 0 8px;letter-spacing:0;line-height:1.35}
+.ad__list p{margin:0;font-size:17px;line-height:1.8;color:var(--body)}
+.ad__close{margin:44px 0 0;font-size:17px;line-height:1.85;color:var(--body);
+  padding-top:36px;border-top:1px solid var(--hair)}
+.ad__back{margin-top:40px}
+
 /* package detail page */
 .pk-crumb{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-size:13px;
   color:var(--on-blue-s);margin-bottom:4px}
@@ -602,7 +618,7 @@ a.jb-line__v:hover{color:var(--blue)}
           <label><span>Nomor WhatsApp</span><input type="tel" placeholder="08xx xxxx xxxx"></label>
         </div>
         <label><span>Program yang diminati</span>
-          <select><option>Vietnam 8 Hari</option><option>Calcuta India 8 Hari</option><option>Akita Jepang 8 Hari</option><option selected>Tanah Suci Yerusalem 9 Hari</option><option>Mesir, Gunung Sinai, Tanah Suci Yerusalem 11 Hari</option><option>Mesir, Gunung Sinai, Tanah Suci Yerusalem, Petra 13 Hari</option><option>Mukjizat Lourdes – Medali Wasiat Paris 9 Hari</option><option>Mukjizat Lourdes – Fatima 9 Hari</option><option>Roma, Lourdes, Paris, Amsterdam 14 Hari</option><option>Roma, Lourdes, Fatima 14 Hari</option><option>Roma, Lourdes, Paris, Disneyland + Swiss 15 Hari</option><option>Roma, Padre Pio, Medjugorje 12 Hari</option><option>Fatima, Lourdes, Paris 12 Hari</option><option>Fatima, Lourdes, Paris, Disneyland + Swiss 14 Hari</option><option>Eropa Timur 14 Hari</option><option>Medjugorje, Lourdes, Fatima 17 Hari</option><option>Tanah Suci Yerusalem, Roma, Lourdes, Paris 17 Hari</option><option>Turki Napak Tilas Rasul Paulus 10 Hari</option><option>Turki, Yunani, Santorini 12 Hari</option><option>Bunda Maria Guadalupe Mexico 13 Hari</option><option>Bunda Maria Guadalupe Mexico + Amerika 16 Hari</option></select>
+          <select><option>Vietnam 8 Hari</option><option>Calcuta India 8 Hari</option><option selected>Tanah Suci Yerusalem 9 Hari</option><option>Mesir, Gunung Sinai, Tanah Suci Yerusalem 11 Hari</option><option>Mesir, Gunung Sinai, Tanah Suci Yerusalem, Petra 13 Hari</option><option>Mukjizat Lourdes – Medali Wasiat Paris 9 Hari</option><option>Mukjizat Lourdes – Fatima 9 Hari</option><option>Roma, Lourdes, Paris, Amsterdam 14 Hari</option><option>Roma, Lourdes, Fatima 14 Hari</option><option>Roma, Lourdes, Paris, Disneyland + Swiss 15 Hari</option><option>Roma, Padre Pio, Medjugorje 12 Hari</option><option>Fatima, Lourdes, Paris 12 Hari</option><option>Fatima, Lourdes, Paris, Disneyland + Swiss 14 Hari</option><option>Eropa Timur 14 Hari</option><option>Medjugorje, Lourdes, Fatima 17 Hari</option><option>Tanah Suci Yerusalem, Roma, Lourdes, Paris 17 Hari</option><option>Turki Napak Tilas Rasul Paulus 10 Hari</option><option>Turki, Yunani, Santorini 12 Hari</option><option>Bunda Maria Guadalupe Mexico 13 Hari</option><option>Bunda Maria Guadalupe Mexico + Amerika 16 Hari</option></select>
         </label>
         <div class="jb-form__row">
           <label><span>Perkiraan bulan keberangkatan</span><input type="text" placeholder="Mei 2026"></label>
@@ -631,11 +647,11 @@ a.jb-line__v:hover{color:var(--blue)}
         </div>
         <div class="pkg__body">
           <h3>Ziarah Asia</h3>
-          <p class="sub sub--sm">Tiga tempat ziarah yang lebih dekat dan lebih ringan biayanya — La Vang di Vietnam, jejak Bunda Teresa di Kalkuta, dan Akita di Jepang.</p>
+          <p class="sub sub--sm">Dua tempat ziarah yang lebih dekat dan lebih ringan biayanya — La Vang di Vietnam dan jejak Bunda Teresa di Kalkuta.</p>
           <div class="pkg__foot">
             <hr>
             <div class="pkg__meta">
-              <strong>3 program</strong>
+              <strong>2 program</strong>
               <span>8 hari</span>
             </div>
             <a class="tlink" href="../tour-2026.html#asia">Lihat program <span aria-hidden="true">›</span></a>
