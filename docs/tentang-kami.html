@@ -158,7 +158,11 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
 .jbh__arrow:focus-visible,.jbh__cta:focus-visible,.jbh__btn:focus-visible
   {outline:2px solid var(--gold);outline-offset:3px}
 
-.sec{padding:112px 0;background:var(--white)}
+.sec{padding:88px 0;background:var(--white)}
+/* A page header already carries its own generous bottom padding, so the next
+   section does not need a full stride on top of it — that read as a gap
+   rather than as breathing room. */
+.band--short + .sec,.band--short + .sec--bg{padding-top:56px}
 .sec--bg{background:var(--bg)}
 .sec__head--center{text-align:center;max-width:var(--long);margin:0 auto}
 .sec__head--split{display:flex;align-items:flex-end;justify-content:space-between;gap:48px}
@@ -389,7 +393,7 @@ section[id]{scroll-margin-top:140px}
 .jb-tbd--dk{background:var(--blue-soft);color:var(--blue)}
 
 /* contact page */
-.band--short{padding:96px 0}
+.band--short{padding:88px 0 72px}
 .band--short h1{color:#fff;font-size:60px;line-height:1.1}
 .grid--4{grid-template-columns:repeat(4,1fr)}
 .sub--xs{font-size:13px;line-height:1.7}
@@ -482,7 +486,8 @@ a.jb-line__v:hover{color:var(--blue)}
   .jbh__btn{flex:1 1 auto;justify-content:center;padding:15px 20px}
   .jbh__arrow{width:42px;height:42px;font-size:22px}
   .jbh__arrow--prev{left:12px}.jbh__arrow--next{right:12px}
-  .sec{padding:72px 0}
+  .sec{padding:60px 0}
+  .band--short + .sec,.band--short + .sec--bg{padding-top:40px}
   .band{padding:80px 0}
   .grid--3,.grid--4{grid-template-columns:1fr;gap:24px}
   .pk-gal{grid-template-columns:repeat(2,1fr);gap:8px}
@@ -499,7 +504,7 @@ a.jb-line__v:hover{color:var(--blue)}
   /* 3:4 at full phone width would run past the fold on its own */
   .split__media--por img{max-width:280px;margin:0 auto}
   .ceo__q{font-size:24px}
-  .band--short{padding:64px 0}
+  .band--short{padding:60px 0 48px}
   .band--short h1{font-size:36px}
   .jb-form{padding:24px}
   .jb-form__row{flex-direction:column}
@@ -520,7 +525,7 @@ a.jb-line__v:hover{color:var(--blue)}
 </style>
 </head>
 <body class="jb-doc">
-<p class="jb-note jb-note--warn"><strong>Halaman contoh. Angka rekam jejak, cerita pendiri, dan testimoni di bawah ini masih placeholder — menunggu data dari JB Tour.</strong></p>
+
 <header class="hdr">
   <div class="util">
     <div class="wrap util__in">
