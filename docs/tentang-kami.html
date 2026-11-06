@@ -176,6 +176,12 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
 .pkg{position:relative;display:flex;flex-direction:column;transition:transform .32s cubic-bezier(.22,.61,.36,1),box-shadow .32s ease}
 .pkg:hover{transform:translateY(-6px);box-shadow:0 22px 54px rgba(0,43,87,.14)}
 .pkg__media{overflow:hidden;aspect-ratio:880/560;position:relative}
+/* The programme image is JB Tour's own A4 brochure cover, not a photograph.
+   Cropped into the landscape window the other cards use, it would lose the
+   title and the route, so these keep the page's own proportions. */
+.pkg__media--flyer{aspect-ratio:894/1264}
+.pkg__media--flyer img{object-fit:contain;background:var(--blue-soft)}
+.pkg--flyer:hover .pkg__media--flyer img{transform:none}
 .pkg__media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
 .pkg:hover .pkg__media img{transform:scale(1.06)}
 .pkg__body{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1}
@@ -183,6 +189,13 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
   font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:var(--r-pill);line-height:1}
 .pkg__foot{margin-top:auto;display:flex;flex-direction:column;gap:12px}
 .pkg__meta{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--soft)}
+/* Price is the first thing a reader looks for and the catalogue finally has
+   it, so it sits on the same line as the duration. The departure summary
+   moves to its own line: it used to read "Keberangkatan: 22 keberangkatan",
+   the label repeating the value. */
+.pkg__price{color:var(--soft)}
+.pkg__price strong{color:var(--gold-dk);font-variant-numeric:tabular-nums}
+.pkg__dep{margin:8px 0 0;font-size:13px;color:var(--soft)}
 .pkg__meta strong{color:var(--body)}
 .tlink{color:var(--blue);font-size:15px;font-weight:700;text-decoration:none}
 .pkg__t{font-size:23px;line-height:1.28}
@@ -264,11 +277,15 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
 .jb-fab:hover{background:var(--gold-br);transform:translateY(-2px)}
 .jb-fab:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
-/* Tour 2026 page */
+/* Tour 2027 page */
 .sec--tight{padding-bottom:0}
 .sec--top0{padding-top:32px}
 .jump__h{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   color:var(--soft);text-align:center;margin-bottom:16px}
+/* The old pricing block was taken off this page when no price was shown.
+   The catalogue now publishes one, so what it excludes — airport tax, visa,
+   insurance, tipping — has to appear beside it. One line, not the old block. */
+.jump__note{margin:20px 0 0;max-width:72ch;font-size:13px;line-height:1.75;color:var(--soft)}
 .jb-jump{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .jb-jump a{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;
   border:1px solid var(--hair);border-radius:var(--r-pill);background:var(--white);
@@ -553,7 +570,7 @@ a.jb-line__v:hover{color:var(--blue)}
     <div class="wrap bar__in">
       <a class="logo" href="index.html"><img src="assets/jbtour-logo-header.png" alt="JB Tour — Pilihan Tepat Ziarah Anda"></a>
       <nav class="nav" aria-label="Utama">
-        <a href="index.html">Beranda</a><div class="nav__has"><a href="tour-2026.html" aria-haspopup="true">Paket<svg class="nav__car" viewBox="0 0 10 6" aria-hidden="true" width="10" height="6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a><div class="nav__sub"><a href="tour-2026.html">Tour 2026</a><a href="past-tour.html">Past Tour</a></div></div><a href="artikel.html">Artikel</a><a href="tentang-kami.html" class="is-on" aria-current="page">Tentang Kami</a><a href="kontak.html">Kontak</a>
+        <a href="index.html">Beranda</a><div class="nav__has"><a href="tour-2027.html" aria-haspopup="true">Paket<svg class="nav__car" viewBox="0 0 10 6" aria-hidden="true" width="10" height="6"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a><div class="nav__sub"><a href="tour-2027.html">Tour 2027</a><a href="past-tour.html">Past Tour</a></div></div><a href="artikel.html">Artikel</a><a href="tentang-kami.html" class="is-on" aria-current="page">Tentang Kami</a><a href="kontak.html">Kontak</a>
       </nav>
       <div class="bar__act">
         <div class="lang" role="group" aria-label="Language / Bahasa"><span class="jb-lang__i is-on" aria-current="true">ID</span><span aria-hidden="true">/</span><a class="jb-lang__i" href="en/tentang-kami.html" hreflang="en">EN</a></div>
@@ -625,7 +642,7 @@ a.jb-line__v:hover{color:var(--blue)}
     <div class="grid grid--4 mt-lg">
       
       <div class="stat">
-        <p class="stat__n">20</p>
+        <p class="stat__n">18</p>
         <p class="stat__l">Program Ziarah</p>
         
       </div>
@@ -717,8 +734,8 @@ a.jb-line__v:hover{color:var(--blue)}
       <p>Biro perjalanan ziarah Katolik di Jakarta. Melayani peziarah ke Tanah Suci, Eropa, Asia, Turki, dan Meksiko.</p>
       <p><a href="https://www.instagram.com/jbtourindonesia_">Instagram</a> · <a href="https://www.facebook.com/JBTourIndo/">Facebook</a></p>
     </div>
-    <div><h3>Kategori Ziarah</h3><ul><li><a href="tour-2026.html#asia">Ziarah Asia</a></li><li><a href="tour-2026.html#tanah-suci">Ziarah Tanah Suci</a></li><li><a href="tour-2026.html#eropa">Ziarah Eropa Barat & Timur</a></li><li><a href="tour-2026.html#tanah-suci-eropa">Ziarah Tanah Suci + Eropa Barat</a></li><li><a href="tour-2026.html#napak-tilas-rasul-paulus">Ziarah Napak Tilas Rasul Paulus</a></li><li><a href="tour-2026.html#mexico">Ziarah Mexico</a></li></ul></div>
-    <div><h3>Perusahaan</h3><ul><li><a href="#top">Tentang Kami</a></li><li><a href="#top">Visi & Misi</a></li><li><a href="#top">Tour 2026</a></li><li><a href="#top">Kontak</a></li></ul></div>
+    <div><h3>Kategori Ziarah</h3><ul><li><a href="tour-2027.html#tanah-suci">Ziarah Tanah Suci</a></li><li><a href="tour-2027.html#penampakan-maria">Penampakan Bunda Maria</a></li><li><a href="tour-2027.html#jejak-santo">Jejak Para Santo</a></li><li><a href="tour-2027.html#eropa-klasik">Eropa Klasik</a></li><li><a href="tour-2027.html#amerika">Ziarah Amerika</a></li><li><a href="tour-2027.html#wisata-asia">Wisata Asia</a></li></ul></div>
+    <div><h3>Perusahaan</h3><ul><li><a href="#top">Tentang Kami</a></li><li><a href="#top">Visi & Misi</a></li><li><a href="#top">Tour 2027</a></li><li><a href="#top">Kontak</a></li></ul></div>
     <div class="foot__c">
       <h3>Hubungi Kami</h3>
       <p class="foot__lbl">Kantor</p>
