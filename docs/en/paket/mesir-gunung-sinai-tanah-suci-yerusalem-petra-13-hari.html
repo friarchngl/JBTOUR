@@ -52,7 +52,13 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
 .btns--c{justify-content:center}
 
 .hdr{position:sticky;top:0;z-index:99;background:var(--blue);box-shadow:0 2px 18px rgba(0,43,87,.28)}
-.util{background:var(--blue-dp);font-size:13px}
+/* The contact strip earns its place at the top of the page and nowhere else.
+   Once the reader has started scrolling it folds away, leaving the brand bar
+   as a shorter sticky header. max-height rather than display so it animates;
+   the value only has to exceed the strip's real height. */
+.util{background:var(--blue-dp);font-size:13px;overflow:hidden;
+  max-height:80px;transition:max-height .3s ease,opacity .22s ease}
+.hdr.is-tight .util{max-height:0;opacity:0}
 .util__in,.bar__in{display:flex;align-items:center;justify-content:space-between;gap:32px}
 .util__in{padding-top:10px;padding-bottom:10px}
 /* Utility bar: named pills only. The numbers live on the Contact page — up
@@ -66,7 +72,7 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
 .jb-bar__b:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
 .jb-bar__b:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .bar{padding:16px 0}
-.logo img{width:208px}
+.logo img{width:156px}
 .nav{display:flex;gap:24px;flex:1;justify-content:center;align-items:center}
 .nav a{color:#fff;text-decoration:none;font-size:15px;font-weight:600}
 .nav a:hover,.nav a.is-on{color:var(--gold)}
@@ -498,7 +504,7 @@ a.jb-line__v:hover{color:var(--blue)}
   .jb-form{padding:24px}
   .jb-form__row{flex-direction:column}
   .sec__head--split{flex-direction:column;align-items:flex-start;gap:24px}
-  .logo img{width:142px}
+  .logo img{width:116px}
   /* Stacked into one column the footer reads as a single run of text, so it
      wants a clearer break from the band above than the desktop 72px. */
   .foot__in{flex-direction:column;padding-top:88px;gap:8px}
@@ -514,7 +520,7 @@ a.jb-line__v:hover{color:var(--blue)}
 </style>
 </head>
 <body class="jb-doc">
-<p class="jb-note"><strong>Design preview.</strong> Static approximation of the Elementor template — same tokens, same copy. Programme names, durations and departure months are real; photography is placeholder.</p><p class="jb-note jb-note--warn"><strong>Sample page. The day-by-day schedule and the cost breakdown below are placeholders and will be replaced with JB Tour's official itinerary.</strong></p>
+<p class="jb-note jb-note--warn"><strong>Sample page. The day-by-day schedule and the cost breakdown below are placeholders and will be replaced with JB Tour's official itinerary.</strong></p>
 <header class="hdr">
   <div class="util">
     <div class="wrap util__in">
@@ -538,6 +544,23 @@ a.jb-line__v:hover{color:var(--blue)}
     </div>
   </div>
 </header>
+<script>(function(){
+  var h=document.querySelector('.hdr'); if(!h) return;
+  // Hysteresis: fold at 90px, unfold only back at 30px, so a header that sits
+  // exactly on the threshold cannot flicker open and shut while scrolling.
+  var tight=false;
+  function tick(){
+    var y=window.scrollY||document.documentElement.scrollTop;
+    if(!tight&&y>90){tight=true;h.classList.add('is-tight');}
+    else if(tight&&y<30){tight=false;h.classList.remove('is-tight');}
+  }
+  var queued=false;
+  addEventListener('scroll',function(){
+    if(queued) return; queued=true;
+    requestAnimationFrame(function(){queued=false;tick();});
+  },{passive:true});
+  tick();
+})();</script>
 <section class="band band--solid band--short" id="top">
   <div class="band__in">
     <nav class="pk-crumb" aria-label="Breadcrumb">
