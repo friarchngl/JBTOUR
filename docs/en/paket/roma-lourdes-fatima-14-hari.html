@@ -490,6 +490,10 @@ a.jb-line__v:hover{color:var(--blue)}
   .band--short + .sec,.band--short + .sec--bg{padding-top:40px}
   .band{padding:80px 0}
   .grid--3,.grid--4{grid-template-columns:1fr;gap:24px}
+  /* Six stacked cards is a long scroll on a phone for what is meant to be an
+     overview. The first three stay; the rest are one tap away behind the
+     "Semua program" button, which now actually goes somewhere. */
+  .grid--cap3 > :nth-child(n+4){display:none}
   .pk-gal{grid-template-columns:repeat(2,1fr);gap:8px}
   .pk-facts{margin-top:36px}
   .pk-facts>div{flex:1 1 100%;border-right:0;border-bottom:1px solid var(--on-blue-h);padding:16px 0}
@@ -747,7 +751,7 @@ a.jb-line__v:hover{color:var(--blue)}
       <p>A Catholic pilgrimage bureau in Jakarta, serving pilgrims to the Holy Land, Europe, Asia, Turkey and Mexico.</p>
       <p><a href="https://www.instagram.com/jbtourindonesia_">Instagram</a> · <a href="https://www.facebook.com/JBTourIndo/">Facebook</a></p>
     </div>
-    <div><h3>Pilgrimage Categories</h3><ul><li><a href="#program">Asian Pilgrimages</a></li><li><a href="#program">Holy Land Pilgrimages</a></li><li><a href="#program">Western & Eastern Europe</a></li><li><a href="#program">Holy Land + Western Europe</a></li><li><a href="#program">In the Footsteps of St Paul</a></li><li><a href="#program">Mexico</a></li></ul></div>
+    <div><h3>Pilgrimage Categories</h3><ul><li><a href="../tour-2026.html#asia">Asian Pilgrimages</a></li><li><a href="../tour-2026.html#tanah-suci">Holy Land Pilgrimages</a></li><li><a href="../tour-2026.html#eropa">Western & Eastern Europe</a></li><li><a href="../tour-2026.html#tanah-suci-eropa">Holy Land + Western Europe</a></li><li><a href="../tour-2026.html#napak-tilas-rasul-paulus">In the Footsteps of St Paul</a></li><li><a href="../tour-2026.html#mexico">Mexico</a></li></ul></div>
     <div><h3>Company</h3><ul><li><a href="#top">About Us</a></li><li><a href="#top">Vision & Mission</a></li><li><a href="#top">Tour 2026</a></li><li><a href="#top">Contact</a></li></ul></div>
     <div class="foot__c">
       <h3>Contact</h3>
