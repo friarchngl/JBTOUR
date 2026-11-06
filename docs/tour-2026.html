@@ -173,7 +173,7 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
 .grid--3{grid-template-columns:repeat(3,1fr)}
 .card{background:var(--white);border:1px solid var(--hair);border-radius:var(--r-lg);overflow:hidden}
 
-.pkg{display:flex;flex-direction:column;transition:transform .32s cubic-bezier(.22,.61,.36,1),box-shadow .32s ease}
+.pkg{position:relative;display:flex;flex-direction:column;transition:transform .32s cubic-bezier(.22,.61,.36,1),box-shadow .32s ease}
 .pkg:hover{transform:translateY(-6px);box-shadow:0 22px 54px rgba(0,43,87,.14)}
 .pkg__media{overflow:hidden;aspect-ratio:880/560;position:relative}
 .pkg__media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
@@ -192,6 +192,14 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
 .wrap--long{max-width:calc(var(--long) + 64px)}
 .jb-note--warn{background:var(--gold-soft);border-bottom:1px solid rgba(0,0,0,.06)}
 .tlink:hover{color:var(--gold-dk)}
+/* The card already lifts and zooms its photo on hover, so it was promising a
+   click it did not accept — only the small text link was live. This spreads
+   that one link across the whole card: still a single anchor for assistive
+   tech and for the keyboard, but the photo and the title are now the target
+   too. z-index clears .pkg__media, which is positioned. */
+.pkg .tlink::after{content:"";position:absolute;inset:0;z-index:1}
+.pkg:focus-within{outline:2px solid var(--gold);outline-offset:3px}
+.pkg .tlink:focus-visible{outline:none}
 
 .feat{display:flex;flex-direction:column;gap:14px}
 .feat__ic{width:26px;height:26px;border-radius:6px;background:var(--gold-dk);opacity:.9;
@@ -609,7 +617,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>8 hari</strong>
               <span>Keberangkatan: <strong>Mar, Apr, Okt, Nov</strong></span>
             </div>
-            <a class="tlink" href="paket/vietnam-8-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/vietnam-8-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -628,7 +636,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>8 hari</strong>
               <span>Keberangkatan: <strong>Mar, Nov</strong></span>
             </div>
-            <a class="tlink" href="paket/calcuta-india-8-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/calcuta-india-8-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -659,7 +667,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>9 hari</strong>
               <span>Keberangkatan: <strong>Setiap bulan</strong></span>
             </div>
-            <a class="tlink" href="paket/tanah-suci-yerusalem-9-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/tanah-suci-yerusalem-9-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -678,7 +686,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>11 hari</strong>
               <span>Keberangkatan: <strong>Setiap bulan</strong></span>
             </div>
-            <a class="tlink" href="paket/mesir-gunung-sinai-tanah-suci-yerusalem-11-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/mesir-gunung-sinai-tanah-suci-yerusalem-11-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -697,7 +705,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>13 hari</strong>
               <span>Keberangkatan: <strong>Setiap bulan</strong></span>
             </div>
-            <a class="tlink" href="paket/mesir-gunung-sinai-tanah-suci-yerusalem-petra-13-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/mesir-gunung-sinai-tanah-suci-yerusalem-petra-13-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -728,7 +736,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>9 hari</strong>
               <span>Keberangkatan: <strong>Mei, Okt</strong></span>
             </div>
-            <a class="tlink" href="paket/mukjizat-lourdes-medali-wasiat-paris-9-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/mukjizat-lourdes-medali-wasiat-paris-9-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -747,7 +755,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>9 hari</strong>
               <span>Keberangkatan: <strong>Mei, Okt</strong></span>
             </div>
-            <a class="tlink" href="paket/mukjizat-lourdes-fatima-9-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/mukjizat-lourdes-fatima-9-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -766,7 +774,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>14 hari</strong>
               <span>Keberangkatan: <strong>Mar – Des</strong></span>
             </div>
-            <a class="tlink" href="paket/roma-lourdes-paris-amsterdam-14-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/roma-lourdes-paris-amsterdam-14-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -785,7 +793,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>14 hari</strong>
               <span>Keberangkatan: <strong>Mar – Des</strong></span>
             </div>
-            <a class="tlink" href="paket/roma-lourdes-fatima-14-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/roma-lourdes-fatima-14-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -804,7 +812,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>15 hari</strong>
               <span>Keberangkatan: <strong>Libur sekolah / Lebaran</strong></span>
             </div>
-            <a class="tlink" href="paket/roma-lourdes-paris-disneyland-swiss-15-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/roma-lourdes-paris-disneyland-swiss-15-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -823,7 +831,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>12 hari</strong>
               <span>Keberangkatan: <strong>Mei & Okt</strong></span>
             </div>
-            <a class="tlink" href="paket/roma-padre-pio-medjugorje-12-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/roma-padre-pio-medjugorje-12-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -842,7 +850,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>12 hari</strong>
               <span>Keberangkatan: <strong>Mei – Des</strong></span>
             </div>
-            <a class="tlink" href="paket/fatima-lourdes-paris-12-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/fatima-lourdes-paris-12-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -861,7 +869,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>14 hari</strong>
               <span>Keberangkatan: <strong>Libur sekolah / Lebaran</strong></span>
             </div>
-            <a class="tlink" href="paket/fatima-lourdes-paris-disneyland-swiss-14-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/fatima-lourdes-paris-disneyland-swiss-14-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -880,7 +888,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>14 hari</strong>
               <span>Keberangkatan: <strong>Mei & Okt + Lebaran</strong></span>
             </div>
-            <a class="tlink" href="paket/eropa-timur-14-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/eropa-timur-14-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -899,7 +907,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>17 hari</strong>
               <span>Keberangkatan: <strong>Mei & Okt + Lebaran</strong></span>
             </div>
-            <a class="tlink" href="paket/medjugorje-lourdes-fatima-17-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/medjugorje-lourdes-fatima-17-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -930,7 +938,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>17 hari</strong>
               <span>Keberangkatan: <strong>Mei & Okt + Lebaran</strong></span>
             </div>
-            <a class="tlink" href="paket/tanah-suci-yerusalem-roma-lourdes-paris-17-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/tanah-suci-yerusalem-roma-lourdes-paris-17-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -961,7 +969,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>10 hari</strong>
               <span>Keberangkatan: <strong>Mar, Apr, Okt</strong></span>
             </div>
-            <a class="tlink" href="paket/turki-napak-tilas-rasul-paulus-10-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/turki-napak-tilas-rasul-paulus-10-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -980,7 +988,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>12 hari</strong>
               <span>Keberangkatan: <strong>Mar, Apr, Okt</strong></span>
             </div>
-            <a class="tlink" href="paket/turki-yunani-santorini-12-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/turki-yunani-santorini-12-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -1011,7 +1019,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>13 hari</strong>
               <span>Keberangkatan: <strong>Mei & Okt + Lebaran</strong></span>
             </div>
-            <a class="tlink" href="paket/bunda-maria-guadalupe-mexico-13-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/bunda-maria-guadalupe-mexico-13-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
@@ -1030,7 +1038,7 @@ a.jb-line__v:hover{color:var(--blue)}
               <strong>16 hari</strong>
               <span>Keberangkatan: <strong>Mei & Okt + Lebaran</strong></span>
             </div>
-            <a class="tlink" href="paket/bunda-maria-guadalupe-mexico-amerika-16-hari.html">Tanya program ini <span aria-hidden="true">›</span></a>
+            <a class="tlink" href="paket/bunda-maria-guadalupe-mexico-amerika-16-hari.html">Lihat detail program <span aria-hidden="true">›</span></a>
           </div>
         </div>
       </article>
