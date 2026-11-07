@@ -378,10 +378,16 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
 .foot__legal{background:var(--blue-dp);border-top:1px solid var(--on-blue-h);font-size:13px;color:rgba(255,255,255,.58)}
 .foot__legal-in{display:flex;justify-content:space-between;gap:16px;padding-top:24px;padding-bottom:24px}
 
+/* 44px, not 56. It is a standing offer, not the page's main action, and at
+   56px it sat on the content rather than beside it. 44 is the floor: below
+   that it stops being a comfortable touch target, and on a phone, where it
+   loses its label and becomes a circle, 44x44 is all there is to hit. The
+   shadow comes down with it — a 30px blur under a 44px chip reads as a
+   smudge. */
 .jb-fab{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:998;
-  display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 20px;border-radius:var(--r-pill);
-  background:var(--gold);color:var(--ink);text-decoration:none;font-size:15px;font-weight:700;line-height:1;
-  box-shadow:0 10px 30px rgba(0,43,87,.30);transition:background .25s ease,transform .25s ease}
+  display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:var(--r-pill);
+  background:var(--gold);color:var(--ink);text-decoration:none;font-size:14px;font-weight:700;line-height:1;
+  box-shadow:0 8px 22px rgba(0,43,87,.26);transition:background .25s ease,transform .25s ease}
 .jb-fab:hover{background:var(--gold-br);transform:translateY(-2px)}
 .jb-fab:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
@@ -611,7 +617,7 @@ a.jb-line__v:hover{color:var(--blue)}
   .pk-inc{grid-template-columns:1fr;gap:40px}
 }
 @media(max-width:782px){
-  .jb-fab{padding:0;width:56px;justify-content:center}
+  .jb-fab{padding:0;width:44px;justify-content:center}
   .jb-fab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 }
 @media(max-width:767px){
@@ -1069,7 +1075,7 @@ a.jb-line__v:hover{color:var(--blue)}
   </div>
 </footer>
 <a class="jb-fab" href="https://wa.me/6282180005703?text=Hello%20JB%20Tour%2C%20I%20would%20like%20to%20ask%20about%20your%20pilgrimage%20packages." aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.43 12.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.43 12.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
   <span>Chat on WhatsApp</span>
 </a>
 </body>
