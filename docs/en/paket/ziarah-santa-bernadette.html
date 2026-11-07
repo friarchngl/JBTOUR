@@ -330,6 +330,18 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
 .band__q{font-family:var(--fh);font-size:38px;font-style:italic;font-weight:600;color:#fff;line-height:1.4;text-wrap:balance}
 .band__b{color:var(--on-blue);line-height:1.85}
 .band h2{color:#fff}
+/* Set in CSS, not in the string. "Tour 2027" still has to read as a name in
+   the <title>, the nav and the meta description, where capitals look like
+   shouting; it is only the display of this one heading that wants them.
+   Capitals in a serif face set too tight — the letterforms were drawn to be
+   spaced by their own lowercase — so they get a little tracking back.
+
+   Cormorant Garamond's default figures are old-style: 2027 sits at
+   x-height with the 2s dropping below the baseline. That is right beside
+   lowercase, which is why "Tour 2027" looked settled before, and wrong
+   beside capitals, where the year reads as a smaller, sunken word. Lining
+   figures are in the font; they just have to be asked for. */
+.h1--caps{text-transform:uppercase;letter-spacing:.04em;font-variant-numeric:lining-nums}
 
 .jb-chip{display:inline-block;font-size:12px;font-weight:700;padding:5px 12px;border-radius:var(--r-pill);
   line-height:1.3;background:var(--blue-soft);color:var(--blue);white-space:nowrap}
@@ -399,7 +411,6 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
 /* The old pricing block was taken off this page when no price was shown.
    The catalogue now publishes one, so what it excludes — airport tax, visa,
    insurance, tipping — has to appear beside it. One line, not the old block. */
-.jump__note{margin:20px 0 0;max-width:72ch;font-size:13px;line-height:1.75;color:var(--soft)}
 .jb-jump{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .jb-jump a{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;
   border:1px solid var(--hair);border-radius:var(--r-pill);background:var(--white);
@@ -555,6 +566,14 @@ section[id]{scroll-margin-top:140px}
 .split__l--wide .btns{margin-top:28px}
 .jb-line__v--plain{font-size:16px;font-weight:500;line-height:1.6;color:var(--body)}
 a.jb-line__v:hover{color:var(--blue)}
+/* Numbered, not ticked. jb-assure's checkmark says "you get this", and
+   half of these clauses are the opposite — a tick beside "uang muka hangus"
+   would read as a promise. Numbers also let a clause be cited by its number,
+   which is how the brochure refers to them. */
+.pk-terms{margin:18px 0 0;padding-left:24px;font-size:14px;color:var(--body);line-height:1.75}
+.pk-terms li{padding-bottom:12px}
+.pk-terms li:last-child{padding-bottom:0}
+.pk-terms li::marker{color:var(--blue);font-weight:700}
 .jb-assure{list-style:none;margin:24px 0 0;padding:0;font-size:15px;color:var(--body)}
 .jb-assure li{position:relative;padding:0 0 10px 26px;line-height:1.7}
 .jb-assure li::before{content:"";position:absolute;left:0;top:9px;width:12px;height:7px;
@@ -802,8 +821,11 @@ a.jb-line__v:hover{color:var(--blue)}
         </div>
       </div>
 
+      <h2 class="pk-h2">Cancellation</h2>
+      <ol class="pk-terms"><li>If JB Tour cancels because the minimum number of participants is not reached, the deposit is refunded in full. The booking may instead be rescheduled, or moved to a programme on another route.</li><li>If a participant cancels, for any reason, the deposit is forfeited.</li><li>Cancellation 31–45 days before departure carries a penalty of 50% of the tour cost.</li><li>Cancellation 15–30 days before departure carries a penalty of 75% of the tour cost.</li><li>Cancellation within 14 days of departure carries a penalty of 100% of the tour cost.</li></ol>
+
       <h2 class="pk-h2">Terms & conditions</h2>
-      <p class="pk-pending"><span class="jb-tbd jb-tbd--dk">awaiting data</span>Registration, deposit, final payment and cancellation follow JB Tour's official policy. The details will appear here once we have them, and are given directly at the time of booking in the meantime.</p>
+      <ol class="pk-terms"><li>JB Tour is committed to giving the best service throughout the journey. JB Tour is not, however, responsible for lost or damaged belongings, excess baggage, detention at an airport or hotel, or changes to the schedule caused by weather, demonstrations, government policy or force majeure.</li><li>If a participant falls ill, has an accident or dies, JB Tour will assist with the insurance claim in accordance with the policy and the insurer's decision. The insurance does not cover pre-existing conditions or dental-related illness.</li><li>Refusal of a visa, or delay in its issue, rests entirely with the Embassy, whose authority is absolute. JB Tour therefore cannot be pursued criminally or civilly, and amounts already paid to suppliers are non-refundable (forfeited) or fall under the cancellation terms above.</li><li>JB Tour reserves the right to cancel a departure if the number of participants does not meet the minimum. Prices, schedules and itineraries may change at any time without prior notice, owing to movements in exchange rates, hotel rates, ticket prices or other factors beyond JB Tour's control.</li></ol>
     </div>
 
       <aside class="pk-rail">

@@ -330,6 +330,18 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
 .band__q{font-family:var(--fh);font-size:38px;font-style:italic;font-weight:600;color:#fff;line-height:1.4;text-wrap:balance}
 .band__b{color:var(--on-blue);line-height:1.85}
 .band h2{color:#fff}
+/* Set in CSS, not in the string. "Tour 2027" still has to read as a name in
+   the <title>, the nav and the meta description, where capitals look like
+   shouting; it is only the display of this one heading that wants them.
+   Capitals in a serif face set too tight — the letterforms were drawn to be
+   spaced by their own lowercase — so they get a little tracking back.
+
+   Cormorant Garamond's default figures are old-style: 2027 sits at
+   x-height with the 2s dropping below the baseline. That is right beside
+   lowercase, which is why "Tour 2027" looked settled before, and wrong
+   beside capitals, where the year reads as a smaller, sunken word. Lining
+   figures are in the font; they just have to be asked for. */
+.h1--caps{text-transform:uppercase;letter-spacing:.04em;font-variant-numeric:lining-nums}
 
 .jb-chip{display:inline-block;font-size:12px;font-weight:700;padding:5px 12px;border-radius:var(--r-pill);
   line-height:1.3;background:var(--blue-soft);color:var(--blue);white-space:nowrap}
@@ -399,7 +411,6 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
 /* The old pricing block was taken off this page when no price was shown.
    The catalogue now publishes one, so what it excludes — airport tax, visa,
    insurance, tipping — has to appear beside it. One line, not the old block. */
-.jump__note{margin:20px 0 0;max-width:72ch;font-size:13px;line-height:1.75;color:var(--soft)}
 .jb-jump{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .jb-jump a{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;
   border:1px solid var(--hair);border-radius:var(--r-pill);background:var(--white);
@@ -555,6 +566,14 @@ section[id]{scroll-margin-top:140px}
 .split__l--wide .btns{margin-top:28px}
 .jb-line__v--plain{font-size:16px;font-weight:500;line-height:1.6;color:var(--body)}
 a.jb-line__v:hover{color:var(--blue)}
+/* Numbered, not ticked. jb-assure's checkmark says "you get this", and
+   half of these clauses are the opposite — a tick beside "uang muka hangus"
+   would read as a promise. Numbers also let a clause be cited by its number,
+   which is how the brochure refers to them. */
+.pk-terms{margin:18px 0 0;padding-left:24px;font-size:14px;color:var(--body);line-height:1.75}
+.pk-terms li{padding-bottom:12px}
+.pk-terms li:last-child{padding-bottom:0}
+.pk-terms li::marker{color:var(--blue);font-weight:700}
 .jb-assure{list-style:none;margin:24px 0 0;padding:0;font-size:15px;color:var(--body)}
 .jb-assure li{position:relative;padding:0 0 10px 26px;line-height:1.7}
 .jb-assure li::before{content:"";position:absolute;left:0;top:9px;width:12px;height:7px;
@@ -767,7 +786,7 @@ a.jb-line__v:hover{color:var(--blue)}
 <section class="band band--solid band--short" id="top">
   <div class="band__in">
     <p class="eyebrow eyebrow--gold">Paket Ziarah</p>
-    <h1>Tour 2027</h1>
+    <h1 class="h1--caps">Tour 2027</h1>
     <p class="band__b">18 program yang kami berangkatkan sepanjang 2027, dari Tanah Suci sampai Amerika, dengan 126 tanggal keberangkatan.</p>
   </div>
 </section>
@@ -777,13 +796,11 @@ a.jb-line__v:hover{color:var(--blue)}
     <nav class="jb-jump" aria-label="Lompat ke kategori">
       <a href="#tanah-suci">Ziarah Tanah Suci<span>4</span></a><a href="#penampakan-maria">Penampakan Bunda Maria<span>5</span></a><a href="#jejak-santo">Jejak Para Santo<span>5</span></a><a href="#eropa-klasik">Eropa Klasik<span>2</span></a><a href="#amerika">Ziarah Amerika<span>1</span></a><a href="#wisata-asia">Wisata Asia<span>1</span></a>
     </nav>
-    <p class="jump__note">Harga per orang untuk kamar twin atau triple, dan turun seiring bertambahnya jumlah peserta rombongan. Belum termasuk airport tax, visa, asuransi, dan tipping. Hubungi kami dengan menyebutkan program dan tanggal keberangkatan untuk rincian lengkapnya.</p>
   </div>
 </section>
 <section class="sec sec--bg" id="tanah-suci">
   <div class="wrap">
     <div class="sec__head">
-      <p class="eyebrow">Paket Ziarah</p>
       <h2>Ziarah Tanah Suci</h2>
       <p class="sub">Yerusalem, Betlehem, Nazaret dan Danau Galilea — sebagian dirangkai dengan Mesir, Gunung Sinai, Petra atau Gunung Hermon.</p>
     </div>
@@ -875,7 +892,6 @@ a.jb-line__v:hover{color:var(--blue)}
 <section class="sec " id="penampakan-maria">
   <div class="wrap">
     <div class="sec__head">
-      <p class="eyebrow">Paket Ziarah</p>
       <h2>Penampakan Bunda Maria</h2>
       <p class="sub">Lourdes, Fatima dan La Salette — tempat-tempat Bunda Maria menampakkan diri, dengan Roma sebagai titik awal atau akhir.</p>
     </div>
@@ -987,7 +1003,6 @@ a.jb-line__v:hover{color:var(--blue)}
 <section class="sec sec--bg" id="jejak-santo">
   <div class="wrap">
     <div class="sec__head">
-      <p class="eyebrow">Paket Ziarah</p>
       <h2>Jejak Para Santo</h2>
       <p class="sub">Santiago de Compostela, Padre Pio, Santa Faustina dan Medjugorje — perjalanan yang mengikuti jejak para kudus.</p>
     </div>
@@ -1099,7 +1114,6 @@ a.jb-line__v:hover{color:var(--blue)}
 <section class="sec " id="eropa-klasik">
   <div class="wrap">
     <div class="sec__head">
-      <p class="eyebrow">Paket Ziarah</p>
       <h2>Eropa Klasik</h2>
       <p class="sub">Rangkaian kota besar Eropa dengan tempat ziarah utamanya — Roma, Lourdes, Barcelona, Paris dan Amsterdam.</p>
     </div>
@@ -1151,7 +1165,6 @@ a.jb-line__v:hover{color:var(--blue)}
 <section class="sec sec--bg" id="amerika">
   <div class="wrap">
     <div class="sec__head">
-      <p class="eyebrow">Paket Ziarah</p>
       <h2>Ziarah Amerika</h2>
       <p class="sub">Bunda Maria Guadalupe di Meksiko, tempat ziarah Maria yang paling banyak dikunjungi di dunia.</p>
     </div>
@@ -1183,7 +1196,6 @@ a.jb-line__v:hover{color:var(--blue)}
 <section class="sec " id="wisata-asia">
   <div class="wrap">
     <div class="sec__head">
-      <p class="eyebrow">Paket Ziarah</p>
       <h2>Wisata Asia</h2>
       <p class="sub">Satu-satunya program wisata, bukan ziarah — bentang alam Tiongkok selatan dengan biaya yang jauh lebih ringan.</p>
     </div>
