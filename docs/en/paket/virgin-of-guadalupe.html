@@ -127,22 +127,35 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
    its first half — white type must not sit in a lightening field — and the
    wrap's bottom padding below is what keeps the buttons out of it. The colour
    is --bg, the section underneath, so the two meet at the same value. */
-/* The stops trace a smoothstep (3u²−2u³), which is flat at both ends, and the
-   ramp finishes at 77% so the last quarter is already the page colour. Both
-   details matter: the eye does not see a gradient, it sees a *change* in one,
-   and a curve that is still climbing when it hits the edge reads as a line
-   even when the two colours either side are identical. The earlier version
-   arrived at full white at exactly 100%, climbing 5 luminance per pixel, and
-   stopped dead — measured, and visible. This one arrives at nothing. */
-.jbh__fade{position:absolute;left:0;right:0;bottom:0;height:104px;z-index:1;pointer-events:none;
+/* Two things decide whether this reads as soft: how far the luminance has to
+   travel, and how fast it gets there. Under the fade the hero is near-solid
+   navy and the page below is almost white, so the travel is fixed at about
+   215 levels — the only lever is length. At 104px that was roughly 3 levels
+   per pixel and looked like a fog bank with an edge; at 230px it is about
+   1.4, which the eye reads as the photograph dissolving.
+
+   The ramp is a trapezoid rather than a smoothstep: eased shoulders so the
+   slope is continuous where it meets the photograph and where it meets the
+   page, straight in between. Smoothstep peaks at 1.5x its own average, which
+   puts the steepest part in the middle, exactly where it is most visible; a
+   shoulder of 0.22 peaks at 1.28x instead. It finishes at 86%, leaving the
+   last 32px flat, because a curve still climbing when it reaches the edge
+   reads as a line even when the colours either side are identical.
+
+   The stops are percentages, so the same gradient serves both breakpoints and
+   only the height changes. The wrap's bottom padding is kept equal to that
+   height: it is what holds the type out of the fade, and the two drifting
+   apart is what once pushed the headline into the lightening field. */
+.jbh__fade{position:absolute;left:0;right:0;bottom:0;height:230px;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,
-    rgba(247,249,252,0) 0%,rgba(247,249,252,.03) 8%,rgba(247,249,252,.10) 15%,
-    rgba(247,249,252,.215) 23%,rgba(247,249,252,.356) 31%,rgba(247,249,252,.5) 38.5%,
-    rgba(247,249,252,.643) 46%,rgba(247,249,252,.785) 54%,rgba(247,249,252,.901) 62%,
-    rgba(247,249,252,.97) 69%,rgba(247,249,252,.993) 73%,rgba(247,249,252,1) 77%,
+    rgba(247,249,252,0) 0%,rgba(247,249,252,.0081) 6.1%,rgba(247,249,252,.0521) 12.3%,
+    rgba(247,249,252,.1337) 18.4%,rgba(247,249,252,.2253) 24.6%,rgba(247,249,252,.317) 30.7%,
+    rgba(247,249,252,.4083) 36.9%,rgba(247,249,252,.5) 43%,rgba(247,249,252,.5917) 49.1%,
+    rgba(247,249,252,.683) 55.3%,rgba(247,249,252,.7747) 61.4%,rgba(247,249,252,.8663) 67.6%,
+    rgba(247,249,252,.9479) 73.7%,rgba(247,249,252,.9919) 79.9%,rgba(247,249,252,1) 86%,
     rgba(247,249,252,1) 100%)}
 .jbh__wrap{position:relative;z-index:2;max-width:var(--maxw);width:100%;margin:0 auto;
-  min-height:680px;min-height:clamp(516px,calc(100svh - 260px),980px);padding:40px 32px 104px;display:flex;flex-direction:column;justify-content:flex-end;gap:30px}
+  min-height:680px;min-height:clamp(516px,calc(100svh - 260px),980px);padding:40px 32px 230px;display:flex;flex-direction:column;justify-content:flex-end;gap:30px}
 /* The captions all occupy one grid cell, so they stack for the cross-fade and
    the row still sizes itself from the tallest of them. The earlier version
    positioned them absolutely and reserved a fixed height instead, which meant
@@ -545,10 +558,10 @@ a.jb-line__v:hover{color:var(--blue)}
      .wrap, which silently wiped the footer's 72px top and the legal bar's 24px
      and left the footer logo flush against the band above it. */
   .wrap{padding-left:24px;padding-right:24px}
-  .jbh__wrap{min-height:560px;min-height:clamp(500px,calc(100svh - 162px),780px);padding:28px 22px 80px;gap:24px}
+  .jbh__wrap{min-height:560px;min-height:clamp(500px,calc(100svh - 162px),780px);padding:28px 22px 160px;gap:24px}
   /* Shorter fade on a narrow screen: the hero is less tall, and the buttons
      go full width, so there is less room to give away above them. */
-  .jbh__fade{height:80px}
+  .jbh__fade{height:160px}
   .jbh__t{font-size:31px;max-width:100%}
   .jbh__acts{width:100%}
   .jbh__btn{flex:1 1 auto;justify-content:center;padding:15px 20px}
