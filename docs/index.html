@@ -65,7 +65,13 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
    each breakpoint, in case the script has not run yet. */
 .hdr{height:var(--hdr-full,201px)}
 .hdr__in{position:fixed;top:0;left:0;right:0;z-index:99;
-  background:var(--blue);box-shadow:0 2px 18px rgba(0,43,87,.28)}
+  background:var(--blue);
+  /* The shadow is what lifts the bar off white sections further down, but at
+     rest the bar is sitting on the hero in its own colour, and there the
+     shadow was the darkest thing in the seam — a hairline across what should
+     read as one surface. So it arrives with the scroll, on the same variable
+     that tightens the bar: none at the top, full once the bar has lifted. */
+  box-shadow:0 2px 18px rgba(0,43,87,calc(.28 * var(--hp2,0)))}
 /* The contact strip earns its place at the top of the page and nowhere else.
    Once the reader has started scrolling it folds away, leaving the brand bar
    as a shorter sticky header.
@@ -145,6 +151,36 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
    This replaces the solid blue band the fixed row used to sit on. */
 .jbh__scrim{position:absolute;inset:0;background:linear-gradient(180deg,
   rgba(0,32,66,.30) 0%,rgba(0,32,66,.26) 26%,rgba(0,32,66,.72) 68%,rgba(0,32,66,.92) 100%)}
+/* The header is a flat #004992 and the top of the photograph, under the
+   scrim, is within a hair of it: measured across the seam the difference is
+   dE 3.4 on desktop, 4.6 on mobile. That is small, but all of it happens in
+   one pixel while everything around it changes over tens, and a
+   discontinuity inside what looks like one surface reads as a flaw rather
+   than as a bar over a picture. So the hero starts at the header's own
+   colour and lets go of it.
+
+   This sits above the scrim, not below it: underneath, the scrim's 30% navy
+   would stack on top of the band and the hero would start darker than the
+   header instead of matching it.
+
+   The shoulders are asymmetric. A short one at the top (0.10) so the band
+   begins dissolving at once rather than reading as extra header — it is over
+   90% opaque for only its first 25px — and a long one at the bottom (0.30)
+   so it lands on the photograph with no crease. The height is set by the
+   header's own travel: the bar is fixed, so as it shrinks from 201px to 98px
+   its bottom edge slides 82px down into the hero, and the band has to still
+   be covering the seam when it gets there. At 190px the residual step is
+   dE 1.6 at the end of that travel, under the 2.3 the eye can pick out.
+   Past that the header is over real photograph, far enough from its own
+   colour that the edge reads as intended. */
+.jbh__top{position:absolute;left:0;right:0;top:0;height:190px;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(0,73,146,1) 0%,rgba(0,73,146,.979) 6.3%,rgba(0,73,146,.9062) 12.5%,
+    rgba(0,73,146,.8281) 18.8%,rgba(0,73,146,.75) 25%,rgba(0,73,146,.6719) 31.3%,
+    rgba(0,73,146,.5937) 37.5%,rgba(0,73,146,.5156) 43.8%,rgba(0,73,146,.4375) 50%,
+    rgba(0,73,146,.3594) 56.3%,rgba(0,73,146,.2813) 62.5%,rgba(0,73,146,.2031) 68.8%,
+    rgba(0,73,146,.1266) 75%,rgba(0,73,146,.0629) 81.3%,rgba(0,73,146,.0215) 87.5%,
+    rgba(0,73,146,.003) 93.8%,rgba(0,73,146,0) 100%)}
 /* The hero used to stop dead: near-solid navy meeting the page background in
    one hard line. This dissolves its last stretch into that background, so the
    photograph ends instead of being cut off. The curve stays almost clear for
@@ -591,6 +627,7 @@ a.jb-line__v:hover{color:var(--blue)}
   /* Shorter fade on a narrow screen: the hero is less tall, and the buttons
      go full width, so there is less room to give away above them. */
   .jbh__fade{height:160px}
+  .jbh__top{height:130px}
   .jbh__t{font-size:31px;max-width:100%}
   .jbh__acts{width:100%}
   .jbh__btn{flex:1 1 auto;justify-content:center;padding:15px 20px}
@@ -734,6 +771,7 @@ a.jb-line__v:hover{color:var(--blue)}
     </li>
   </ul>
   <div class="jbh__scrim"></div>
+  <div class="jbh__top"></div>
   <div class="jbh__fade"></div>
   <button class="jbh__arrow jbh__arrow--prev" type="button" data-step="-1" aria-label="Slide sebelumnya">&lsaquo;</button>
   <button class="jbh__arrow jbh__arrow--next" type="button" data-step="1" aria-label="Slide berikutnya">&rsaquo;</button>
@@ -796,8 +834,8 @@ a.jb-line__v:hover{color:var(--blue)}
   <div class="wrap">
     <div class="sec__head sec__head--split">
       <div>
-        <p class="eyebrow">Produk & Layanan Ziarah</p>
-        <h2>Enam kategori, delapan belas program</h2>
+        <!-- no eyebrow here: catH2 now carries that exact wording -->
+        <h2>Produk & Layanan Ziarah</h2>
         <p class="sub">Program sembilan sampai lima belas hari, dari Tanah Suci sampai Amerika. Pilih kategori untuk melihat seluruh programnya.</p>
       </div>
       <a class="btn btn--outline" href="tour-2027.html">Semua program</a>
