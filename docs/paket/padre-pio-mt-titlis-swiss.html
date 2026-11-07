@@ -240,7 +240,14 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
 .split__media img{border-radius:var(--r-lg);width:100%}
 /* portrait framing for the founder shot — a person reads better tall than wide */
 .split__media--por{flex:0 0 34%}
-.split__media--por img{aspect-ratio:3/4;object-fit:cover;display:block}
+/* The founder stands in the lower third of his photograph, with trees filling
+   the rest, so an untouched 3:4 frame reduced him to a figure at the bottom
+   edge. A modest zoom anchored low brings him up without losing the path or
+   the flag, which are the point of the picture. */
+.split__media--por{position:relative;overflow:hidden;border-radius:var(--r-lg);aspect-ratio:3/4}
+.split__media--por img{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 62%;
+  transform:scale(1.3);transform-origin:center 62%;display:block}
 .split__l .btn,.split__r>.btn{margin-top:24px}
 .split__l h2,.split__r h2{margin:6px 0 16px}
 .split__r{flex:1}
