@@ -71,8 +71,13 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
   white-space:nowrap;transition:background .2s ease,color .2s ease,border-color .2s ease}
 .jb-bar__b:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
 .jb-bar__b:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.bar{padding:16px 0}
-.logo img{width:156px}
+/* The brand bar shrinks as well as the strip above it. Once the reader is
+   past the hero the header is only a way back, so it gives up height: the
+   same transition length as the strip, so the two read as one movement. */
+.bar{padding:16px 0;transition:padding .3s ease}
+.logo img{width:156px;display:block;transition:width .3s ease}
+.hdr.is-tight .bar{padding:8px 0}
+.hdr.is-tight .logo img{width:112px}
 .nav{display:flex;gap:24px;flex:1;justify-content:center;align-items:center}
 .nav a{color:#fff;text-decoration:none;font-size:15px;font-weight:600}
 .nav a:hover,.nav a.is-on{color:var(--gold)}
@@ -122,15 +127,29 @@ hr{border:0;border-top:1px solid var(--hair);margin:4px 0}
    its first half — white type must not sit in a lightening field — and the
    wrap's bottom padding below is what keeps the buttons out of it. The colour
    is --bg, the section underneath, so the two meet at the same value. */
-.jbh__fade{position:absolute;left:0;right:0;bottom:0;height:180px;z-index:1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(247,249,252,0) 0%,rgba(247,249,252,.04) 46%,
-    rgba(247,249,252,.20) 68%,rgba(247,249,252,.58) 85%,rgba(247,249,252,1) 100%)}
+/* The stops trace a smoothstep (3u²−2u³), which is flat at both ends, and the
+   ramp finishes at 77% so the last quarter is already the page colour. Both
+   details matter: the eye does not see a gradient, it sees a *change* in one,
+   and a curve that is still climbing when it hits the edge reads as a line
+   even when the two colours either side are identical. The earlier version
+   arrived at full white at exactly 100%, climbing 5 luminance per pixel, and
+   stopped dead — measured, and visible. This one arrives at nothing. */
+.jbh__fade{position:absolute;left:0;right:0;bottom:0;height:104px;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(247,249,252,0) 0%,rgba(247,249,252,.03) 8%,rgba(247,249,252,.10) 15%,
+    rgba(247,249,252,.215) 23%,rgba(247,249,252,.356) 31%,rgba(247,249,252,.5) 38.5%,
+    rgba(247,249,252,.643) 46%,rgba(247,249,252,.785) 54%,rgba(247,249,252,.901) 62%,
+    rgba(247,249,252,.97) 69%,rgba(247,249,252,.993) 73%,rgba(247,249,252,1) 77%,
+    rgba(247,249,252,1) 100%)}
 .jbh__wrap{position:relative;z-index:2;max-width:var(--maxw);width:100%;margin:0 auto;
-  min-height:680px;min-height:clamp(516px,calc(100svh - 260px),980px);padding:0 32px 112px;display:flex;flex-direction:column;justify-content:flex-end;gap:30px}
-/* Reserved height: captions stack absolutely so they can cross-fade, which
-   means the row cannot size itself from its own content. */
-.jbh__caps{position:relative;min-height:262px}
-.jbh__cap{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;
+  min-height:680px;min-height:clamp(516px,calc(100svh - 260px),980px);padding:40px 32px 104px;display:flex;flex-direction:column;justify-content:flex-end;gap:30px}
+/* The captions all occupy one grid cell, so they stack for the cross-fade and
+   the row still sizes itself from the tallest of them. The earlier version
+   positioned them absolutely and reserved a fixed height instead, which meant
+   a guessed number per breakpoint: a three-line headline measured 312px
+   against the 262px reserved and the overflow ran up under the header. */
+.jbh__caps{display:grid}
+.jbh__cap{grid-area:1/1;align-self:end;display:flex;flex-direction:column;
   align-items:flex-start;gap:10px;opacity:0;visibility:hidden;transform:translateY(14px);
   transition:opacity .7s ease,transform .7s ease,visibility .7s}
 .jbh__cap.is-on{opacity:1;visibility:visible;transform:translateY(0);transition-delay:.12s}
@@ -487,13 +506,19 @@ a.jb-line__v:hover{color:var(--blue)}
     border-radius:var(--r-pill);font-size:13px;color:#fff;white-space:nowrap}
   .nav a.is-on,.nav__sub a.is-on{color:var(--gold);border-color:var(--gold)}
   .nav__sub a:hover,.nav__sub a:focus-visible{background:none;color:var(--gold)}
+  /* Below 1024px the contact strip is already hidden, so shrinking the logo
+     alone barely moves the sticky header — the two rows of nav pills are most
+     of its height. They tighten too once the reader has scrolled. */
+  .nav a,.nav__sub a{transition:padding .3s ease,font-size .3s ease}
+  .hdr.is-tight .nav{gap:6px;row-gap:6px}
+  .hdr.is-tight .nav a,.hdr.is-tight .nav__sub a{padding:5px 11px;font-size:12px}
+  .hdr.is-tight .bar__in{row-gap:8px}
   .nav__has{display:contents}
   .nav__has>a{display:none}
   .nav__sub{position:static;transform:none;opacity:1;visibility:visible;display:contents;
     background:none;box-shadow:none;padding:0;min-width:0}
   .jbh__t{font-size:44px}
   .jbh__wrap{min-height:680px}
-  .jbh__caps{min-height:230px}
   .grid--3{grid-template-columns:repeat(2,1fr)}
   /* .split keeps align-items:flex-start, so a stacked child only gets the width
      of its own content unless told otherwise. .split__r was missing from this
@@ -520,12 +545,11 @@ a.jb-line__v:hover{color:var(--blue)}
      .wrap, which silently wiped the footer's 72px top and the legal bar's 24px
      and left the footer logo flush against the band above it. */
   .wrap{padding-left:24px;padding-right:24px}
-  .jbh__wrap{min-height:560px;min-height:clamp(500px,calc(100svh - 162px),780px);padding:0 22px 86px;gap:24px}
+  .jbh__wrap{min-height:560px;min-height:clamp(500px,calc(100svh - 162px),780px);padding:28px 22px 80px;gap:24px}
   /* Shorter fade on a narrow screen: the hero is less tall, and the buttons
      go full width, so there is less room to give away above them. */
-  .jbh__fade{height:132px}
+  .jbh__fade{height:80px}
   .jbh__t{font-size:31px;max-width:100%}
-  .jbh__caps{min-height:206px}
   .jbh__acts{width:100%}
   .jbh__btn{flex:1 1 auto;justify-content:center;padding:15px 20px}
   .jbh__arrow{width:42px;height:42px;font-size:22px}
@@ -558,6 +582,7 @@ a.jb-line__v:hover{color:var(--blue)}
   .jb-form__row{flex-direction:column}
   .sec__head--split{flex-direction:column;align-items:flex-start;gap:24px}
   .logo img{width:116px}
+  .hdr.is-tight .logo img{width:88px}
   /* Stacked into one column the footer reads as a single run of text, so it
      wants a clearer break from the band above than the desktop 72px. */
   .foot__in{flex-direction:column;padding-top:88px;gap:8px}
@@ -641,10 +666,9 @@ a.jb-line__v:hover{color:var(--blue)}
       </figure>
 
       <h2>About this journey</h2>
-      <p>Cairo, Mount Sinai, Jerusalem and Petra. Twelve- and thirteen-day editions..</p><p>As with every JB Tour programme, the group travels with an experienced tour leader and a spiritual director, and everything the journey needs — flights, hotels, restaurants and documents — is arranged from Jakarta.</p>
+      <p>Cairo, Mount Sinai, Jerusalem and Petra. Twelve- and thirteen-day editions.</p><p>As with every JB Tour programme, the group travels with an experienced tour leader and a spiritual director, and everything the journey needs — flights, hotels, restaurants and documents — is arranged from Jakarta.</p>
 
-      <h2 class="pk-h2">Day by day</h2>
-      <p class="pk-pending"><span class="jb-tbd jb-tbd--dk">awaiting data</span>The day-by-day schedule for this programme will appear here once JB Tour has supplied it. Contact us for the full itinerary in the meantime.</p>
+      
 
       
 
