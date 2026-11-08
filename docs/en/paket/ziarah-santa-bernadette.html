@@ -569,11 +569,15 @@ a.jb-line__v:hover{color:var(--blue)}
 /* Numbered, not ticked. jb-assure's checkmark says "you get this", and
    half of these clauses are the opposite — a tick beside "uang muka hangus"
    would read as a promise. Numbers also let a clause be cited by its number,
-   which is how the brochure refers to them. */
+   which is how the brochure refers to them.
+
+   No ::marker rule: the numbers were blue and bold against grey regular
+   text, which made them a second voice counting over the clauses instead of
+   part of them. Left alone, a marker inherits the list item's font and
+   colour, so they match by doing nothing. */
 .pk-terms{margin:18px 0 0;padding-left:24px;font-size:14px;color:var(--body);line-height:1.75}
 .pk-terms li{padding-bottom:12px}
 .pk-terms li:last-child{padding-bottom:0}
-.pk-terms li::marker{color:var(--blue);font-weight:700}
 .jb-assure{list-style:none;margin:24px 0 0;padding:0;font-size:15px;color:var(--body)}
 .jb-assure li{position:relative;padding:0 0 10px 26px;line-height:1.7}
 .jb-assure li::before{content:"";position:absolute;left:0;top:9px;width:12px;height:7px;
